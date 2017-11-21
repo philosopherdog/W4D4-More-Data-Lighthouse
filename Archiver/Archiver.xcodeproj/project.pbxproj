@@ -42,6 +42,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AACC9B1F1FC4C69F0015B76B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9A97D1FC4B0C000075B8C /* AppDelegate.h */,
+				AAE9A97E1FC4B0C000075B8C /* AppDelegate.m */,
+				AAE9A9861FC4B0C000075B8C /* Assets.xcassets */,
+				AAE9A9881FC4B0C000075B8C /* LaunchScreen.storyboard */,
+				AAE9A98B1FC4B0C000075B8C /* Info.plist */,
+				AAE9A98C1FC4B0C000075B8C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AAE9A9711FC4B0C000075B8C = {
 			isa = PBXGroup;
 			children = (
@@ -61,17 +74,12 @@
 		AAE9A97C1FC4B0C000075B8C /* Archiver */ = {
 			isa = PBXGroup;
 			children = (
-				AAE9A97D1FC4B0C000075B8C /* AppDelegate.h */,
-				AAE9A97E1FC4B0C000075B8C /* AppDelegate.m */,
+				AACC9B1F1FC4C69F0015B76B /* Supporting Files */,
 				AAE9A9801FC4B0C000075B8C /* ViewController.h */,
 				AAE9A9811FC4B0C000075B8C /* ViewController.m */,
 				AAE9A9931FC4B27600075B8C /* Person.h */,
 				AAE9A9941FC4B27600075B8C /* Person.m */,
 				AAE9A9831FC4B0C000075B8C /* Main.storyboard */,
-				AAE9A9861FC4B0C000075B8C /* Assets.xcassets */,
-				AAE9A9881FC4B0C000075B8C /* LaunchScreen.storyboard */,
-				AAE9A98B1FC4B0C000075B8C /* Info.plist */,
-				AAE9A98C1FC4B0C000075B8C /* main.m */,
 			);
 			path = Archiver;
 			sourceTree = "<group>";
