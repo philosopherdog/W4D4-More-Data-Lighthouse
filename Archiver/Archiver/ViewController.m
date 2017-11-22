@@ -24,28 +24,20 @@
 }
 
 - (void)loadData {
-  Person *person = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-  if (person == nil) {
-    return;
-  }
-  self.firstNameField.text = person.firstName;
-  self.lastNameField.text = person.lastName;
-  self.ageField.text = @(person.age).stringValue;
+  //1. unarchive using path to person
+  //2. load into textfields if not nil
 }
 
 
 - (IBAction)save {
-  Person *person = [[Person alloc] initWithFirstName:self.firstNameField.text lastName:self.lastNameField.text age:[self.ageField.text intValue]];
-  if (![NSKeyedArchiver archiveRootObject:person  toFile:self.path]) {
-    NSLog(@"something went wrong");
-  };
-  
+  //1. create a person using textfields
+  //2. archive using root object
 }
 
 - (NSString *)path {
   if (!_path) {
-    NSURL *docURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    _path = [docURL URLByAppendingPathComponent:@"mydata"].path;
+    //1. get documents folder as NSURL
+    //2. append path component
   }
   return _path;
 }
