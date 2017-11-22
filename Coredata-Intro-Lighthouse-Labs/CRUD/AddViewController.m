@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fName;
 @property (weak, nonatomic) IBOutlet UITextField *lName;
 @property (weak, nonatomic) IBOutlet UITextField *age;
+@property (weak, nonatomic) IBOutlet UITextField *dogs;
 @end
 
 @implementation AddViewController
@@ -25,7 +26,8 @@
   NSString *fName = self.fName.text;
   NSString *lName = self.lName.text;
   int16_t age = [self.age.text intValue];
-  NSDictionary *data = @{@"fName": fName, @"lName": lName, @"age": @(age)};
+  NSString *dogs = self.dogs.text;
+  NSDictionary *data = @{@"fName": fName, @"lName": lName, @"age": @(age), @"dogs": dogs};
   [self.dataHandler savePerson:data];
   [self.navigationController popViewControllerAnimated:YES];
 }

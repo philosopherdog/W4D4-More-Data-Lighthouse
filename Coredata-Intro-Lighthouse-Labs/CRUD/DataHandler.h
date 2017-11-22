@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Person+CoreDataClass.h"
+#import "Dog+CoreDataClass.h"
 
 @interface DataHandler : NSObject
 - (NSArray<Person*>*)fetchData;
