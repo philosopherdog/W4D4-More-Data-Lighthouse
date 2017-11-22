@@ -37,6 +37,14 @@
   person.firstName = dict[@"fName"];
   person.lastName = dict[@"lName"];
   person.age = [dict[@"age"] intValue];
+  NSArray <NSString *>*dogNames = [dict[@"dogs"] componentsSeparatedByString:@" "];
+  NSMutableArray <Dog*>*dogs = [NSMutableArray arrayWithCapacity:dogNames.count];
+  for (NSString *name in dogNames) {
+    Dog *dog = [[Dog alloc] initWithContext:self.context];
+    dog.name = name;
+    [dogs addObject:dog];
+  }
+  person.dogs = [NSOrderedSet orderedSetWithArray:dogs];
   [self.context insertObject:person];
   [self.delegate saveContext];
 }

@@ -132,7 +132,7 @@
   if (iggy == nil) {
     return;
   }
-  iggy.dog = [NSOrderedSet orderedSetWithArray:@[dog2, dog1]];
+  iggy.dogs = [NSOrderedSet orderedSetWithArray:@[dog2, dog1]];
   [self saveContext];
 }
 
@@ -141,7 +141,7 @@
   NSArray <Person *>*persons = [self.context executeFetchRequest:request error:nil];
   for (Person *person in persons) {
     NSString *fName = person.firstName;
-    for (Dog *dog in person.dog.array) {
+    for (Dog *dog in person.dogs.array) {
       NSString *dogName = dog.name;
       NSLog(@"%@ has a dog named %@", fName, dogName);
     }

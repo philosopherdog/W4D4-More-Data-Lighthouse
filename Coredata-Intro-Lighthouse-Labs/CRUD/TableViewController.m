@@ -43,12 +43,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.persons[section].dog.count;
+  return self.persons[section].dogs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  Dog *dog = self.persons[indexPath.section].dog.array[indexPath.row];
+  Dog *dog = self.persons[indexPath.section].dogs.array[indexPath.row];
   cell.textLabel.text = dog.name;
   cell.detailTextLabel.text = dog.owner.firstName;
   return cell;
