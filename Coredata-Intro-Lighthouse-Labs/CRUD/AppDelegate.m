@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Person+CoreDataClass.h"
-#import "Dog+CoreDataClass.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSManagedObjectContext *context;
@@ -120,32 +119,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   [self saveContext];
-}
-
-#pragma mark - RelationShips
-- (void)createDog {
-  Dog *dog1 = [[Dog alloc] initWithContext:self.context];
-  dog1.name = @"Fred";
-  Dog *dog2 = [[Dog alloc] initWithContext:self.context];
-  dog2.name = @"Jimmy";
-  Person *iggy = [self fetchWithPredicate];
-  if (iggy == nil) {
-    return;
-  }
-  iggy.dogs = [NSOrderedSet orderedSetWithArray:@[dog2, dog1]];
-  [self saveContext];
-}
-
-- (void)fetchPersonsAndRelatedDogs {
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-  NSArray <Person *>*persons = [self.context executeFetchRequest:request error:nil];
-  for (Person *person in persons) {
-    NSString *fName = person.firstName;
-    for (Dog *dog in person.dogs.array) {
-      NSString *dogName = dog.name;
-      NSLog(@"%@ has a dog named %@", fName, dogName);
-    }
-  }
 }
 
 

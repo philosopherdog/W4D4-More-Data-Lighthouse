@@ -10,7 +10,6 @@
 #import "Person+CoreDataClass.h"
 #import "AddViewController.h"
 #import "DataHandler.h"
-#import "Dog+CoreDataClass.h"
 
 @interface TableViewController ()<UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,30 +26,30 @@
   [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
+- (void)fetchData {
+  self.persons = [self.dataHandler fetchData];
+}
+
 - (void)setPersons:(NSArray<Person *> *)persons {
   _persons = persons;
   [self.tableView reloadData];
 }
 
-- (void)fetchData {
-  self.persons = [self.dataHandler fetchData];
-}
-
 #pragma mark - DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return self.persons.count;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.persons[section].dogs.count;
+  return self.persons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  Dog *dog = self.persons[indexPath.section].dogs.array[indexPath.row];
-  cell.textLabel.text = dog.name;
-  cell.detailTextLabel.text = dog.owner.firstName;
+  Person *person = self.persons[indexPath.row];
+  cell.textLabel.text = person.lastName;
+  cell.detailTextLabel.text = person.firstName;
   return cell;
 }
 
@@ -69,9 +68,7 @@
   }
 }
 
-#pragma mark - Core Data
-
-
+#pragma mark - Teardown
 
 - (void)dealloc {
   [NSNotificationCenter.defaultCenter removeObserver:self];
