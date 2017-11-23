@@ -10,6 +10,7 @@
 #import "Person+CoreDataClass.h"
 #import "AddViewController.h"
 #import "DataHandler.h"
+#import "Dog+CoreDataClass.h"
 
 @interface TableViewController ()<UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,24 +39,25 @@
 #pragma mark - DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+  return self.persons.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.persons.count;
+  return self.persons[section].dogs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  Person *person = self.persons[indexPath.row];
-  cell.textLabel.text = person.lastName;
-  cell.detailTextLabel.text = person.firstName;
+  Person *person = self.persons[indexPath.section];
+  Dog *dog = person.dogs[indexPath.row];
+  cell.textLabel.text = dog.name;
+  cell.detailTextLabel.text = person.lastName;
   return cell;
 }
 
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  return [NSString stringWithFormat:@"%@'s Dogs", self.persons[section].lastName];
+  return [NSString stringWithFormat:@"%@'s %@ Dogs", self.persons[section].lastName, @(self.persons[section].dogs.count)];
 }
 
 

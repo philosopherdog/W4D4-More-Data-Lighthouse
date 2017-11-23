@@ -139,7 +139,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="age" destination="UTd-6R-0tP" id="QaB-rl-nSn"/>
+                        <outlet property="age" destination="47K-TU-aTi" id="KNS-8C-dAd"/>
                         <outlet property="dogs" destination="UTd-6R-0tP" id="Cmh-m2-mwf"/>
                         <outlet property="fName" destination="uOJ-cd-GDv" id="xQd-1Z-R5m"/>
                         <outlet property="lName" destination="CsX-is-yjV" id="H0E-Br-Kzu"/>

@@ -8,6 +8,7 @@
 
 #import "DataHandler.h"
 #import "AppDelegate.h"
+#import "Dog+CoreDataClass.h"
 
 @interface DataHandler()
 @property (nonatomic, weak) AppDelegate *delegate;
@@ -36,9 +37,16 @@
   Person *person = [[Person alloc] initWithContext:self.context];
   person.firstName = dict[@"fName"];
   person.lastName = dict[@"lName"];
-  person.age = [dict[@"age"] intValue];
-  __unused NSArray <NSString *>*dogNames = [dict[@"dogs"] componentsSeparatedByString:@" "];
-  [self.context insertObject:person];
+  person.age = (int16_t)[dict[@"age"] intValue];
+  NSArray <NSString *>*dogNames = [dict[@"dogs"] componentsSeparatedByString:@" "];
+  NSMutableArray *dogs = [NSMutableArray arrayWithCapacity:dogNames.count];
+  for (NSString *name in dogNames) {
+    Dog *dog = [[Dog alloc] initWithContext:self.context];
+    dog.name = name;
+    [dogs addObject:dog];
+  }
+  
+  person.dogs = [NSOrderedSet orderedSetWithArray:dogs];
   [self.delegate saveContext];
 }
 @end

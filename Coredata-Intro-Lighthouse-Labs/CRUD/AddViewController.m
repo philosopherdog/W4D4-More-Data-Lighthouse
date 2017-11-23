@@ -25,9 +25,9 @@
 - (IBAction)saveTapped:(UIBarButtonItem *)sender {
   NSString *fName = self.fName.text;
   NSString *lName = self.lName.text;
-  int16_t age = [self.age.text intValue];
+  NSString *age = self.age.text;
   NSString *dogs = self.dogs.text;
-  NSDictionary *data = @{@"fName": fName, @"lName": lName, @"age": @(age), @"dogs": dogs};
+  NSDictionary *data = @{@"fName": fName, @"lName": lName, @"age": age, @"dogs": dogs};
   [self.dataHandler savePerson:data];
   [self.navigationController popViewControllerAnimated:YES];
 }
